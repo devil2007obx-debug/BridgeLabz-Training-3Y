@@ -1,0 +1,240 @@
+                                                          
+                       Web Development Basics Assignment - 1
+NAME = ABHISHEK TOMAR
+SECTION = SB
+ROLL NO : 03
+
+
+1. Difference between Frontend, Backend and Full-Stack Development
+
+Ans. Web development is mainly divided into three parts: frontend, backend and full-stack development.
+
+Frontend Development:
+
+Frontend is the part of a website which users can see and interact with directly. It includes designing webpages, buttons, menus, images, and layouts.
+
+Technologies used: HTML, CSS, JavaScript, React etc.
+
+Example:
+
+In an online shopping website, the product page, search bar, images and add to cart button are frontend parts.
+
+Backend Development:
+
+Backend is the server-side part of a website. It manages the logic, database connection, user authentication and processing of requests.
+
+Technologies used: Python, Java, Node.js, PHP etc.
+
+Example:
+
+When a user places an order on Amazon, backend processes the order and saves information in the database.
+
+Full-Stack Development:
+
+A full-stack developer works on both frontend and backend parts of an application.
+
+Example:
+
+A developer who creates the complete shopping website including user interface, server and database is called a full-stack developer.
+
+2. Client-Server Model Diagram
+
+Ans. User
+
+      |
+
+    Web Browser (Client)
+
+      |
+
+    HTTP Request
+
+      |
+ 
+    Web Server
+
+     |
+
+   Database
+
+     |
+
+  HTTP Response
+
+      |
+
+  Browser Displays Web Page
+
+
+
+3. How Browser Requests and Displays a Web Page
+
+Ans. When a user enters a website address in the browser, the following steps happen:
+
+   1. User enters URL in browser.
+
+   2. Browser sends request to web server.
+
+   3. Web server processes the request.
+
+   4. Server collects data from database if required.
+
+   5. Server sends HTML, CSS and JavaScript files back.
+
+   6. Browser reads files and displays webpage.
+
+
+4. Tools Required for Web Development Environment
+
+Ans. VS Code - Used for writing and editing code.
+
+    Chrome Browser - Used for testing websites.
+
+    Git - Used for managing code versions.
+
+    GitHub - Used for storing projects online.
+
+    Node.js - Helps run JavaScript outside browser.
+
+    npm - Used to install packages.
+
+    Live Server - Shows changes instantly.
+
+    Prettier - Helps format code.
+
+
+5. What is a Web Server?
+
+Ans. A web server is software or a system that stores website files and provides them to users when requested through a browser.
+
+  Common web servers:
+
+  1. Apache Server
+
+  2. NGINX Server
+
+  3. Microsoft IIS
+
+  4. LiteSpeed Server
+
+  5. Caddy Server
+
+6. Roles in a Web Development Project
+
+Ans.Frontend Developer:
+
+   Creates website design and layout, makes pages responsive and works with HTML, CSS and      JavaScript.
+
+  Backend Developer:
+
+ Creates server-side programs, develops APIs, handles login and connects application with database.
+
+Database Administrator:
+
+Manages databases, maintains security, creates backups and improves performance.
+
+
+7. VS Code Setup for Web Development
+
+Steps:
+
+1. Download and install Visual Studio Code.
+
+2. Install extensions like Live Server, Prettier, HTML CSS Support and JavaScript ES6.
+
+3. Create project folder.
+
+4. Create files:
+
+index.html
+
+style.css
+
+script.js
+
+
+8. Difference Between Static and Dynamic Websites
+Static Website:
+
+A static website contains fixed content. The same information is shown to every user.
+
+Features:
+
+Simple and fast
+No database required
+Mostly HTML and CSS based
+
+Example:
+Personal portfolio website.
+
+Dynamic Website:
+
+A dynamic website changes content according to users and database information.
+
+Features:
+
+More interactive
+Uses backend and database
+Content can change automatically
+
+Example:
+Amazon, Facebook and online banking websites.
+
+
+9. Five Web Browsers and Their Rendering Engines
+Ans.  Browser	           Rendering Engine
+    Google Chrome	      Blink
+    Mozilla Firefox	      Gecko
+    Safari	              WebKit
+    Microsoft Edge	      Blink
+    Opera	              Blink
+
+Rendering engines are responsible for converting HTML, CSS and JavaScript code into a visual webpage.
+
+Different browsers use different engines, because of this some websites may look slightly different in different browsers.
+
+
+10. Basic Web Architecture Diagram
+
+Ans.               CLIENT
+          (Browser/User)
+                 |
+                 |
+          HTTP Request
+                 |
+                 ↓
+              SERVER
+          (Application Logic)
+                 |
+        -----------------
+        |               |
+        ↓               ↓
+    Database          APIs
+        |               |
+        -----------------
+                 |
+                 ↓
+          Response Back
+                 |
+                 ↓
+              CLIENT
+        (Displays Website)
+
+
+Conclusion:
+Web development includes different parts like frontend, backend and database. All these parts work together to create a complete web application. Understanding basic web architecture helps developers build better websites and applications.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
