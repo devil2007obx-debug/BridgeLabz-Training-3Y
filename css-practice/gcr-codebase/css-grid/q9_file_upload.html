@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<!-- 
+  Assignment 3 - Question 9
+  Author: Abhishek Tomar
+  Task: File Upload Form restricted to .jpg and .png files using the accept attribute.
+-->
+<html>
+<head>
+    <title>Question 9 - File Upload Form</title>
+</head>
+<body>
+
+    <h1>File Upload Form</h1>
+
+    <form action="#" method="post" enctype="multipart/form-data">
+
+        <label for="fileupload">Choose an image to upload:</label><br>
+        <input type="file" id="fileupload" name="fileupload" accept=".jpg,.png"><br><br>
+
+        <input type="submit" value="Upload">
+
+    </form>
+
+    <p>Note: Only .jpg and .png image files are allowed to be uploaded through this form.</p>
+
+</body>
+</html>

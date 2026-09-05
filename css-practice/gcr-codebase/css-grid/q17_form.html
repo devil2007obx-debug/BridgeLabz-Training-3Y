@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<!-- 
+  Assignment 3 - Question 17 (form.html)
+  Author: Abhishek Tomar
+  Task: Form with text input and submit button, loads result.html into an iframe on submit.
+-->
+<html>
+<head>
+    <title>Question 17 - Form Page</title>
+</head>
+<body>
+
+    <h1>Submit the Form</h1>
+
+    <!-- The form's target attribute points to the name of the iframe below,
+         so the result loads inside the iframe instead of navigating the whole page. -->
+    <form action="result.html" method="get" target="resultFrame">
+        <label for="textinput">Enter something:</label><br>
+        <input type="text" id="textinput" name="textinput" required><br><br>
+        <input type="submit" value="Submit">
+    </form>
+
+    <br>
+
+    <iframe name="resultFrame" title="Result Frame" src="" width="500" height="150"></iframe>
+
+</body>
+</html>

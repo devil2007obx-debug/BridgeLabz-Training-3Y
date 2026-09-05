@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<!-- 
+  Assignment 3 - Question 19
+  Author: Abhishek Tomar
+  Task: Form demonstrating security attributes - autocomplete="off" and required fields.
+-->
+<html>
+<head>
+    <title>Question 19 - Form Security Attributes</title>
+</head>
+<body>
+
+    <h1>Secure Form Example</h1>
+
+    <form action="#" method="post" autocomplete="off">
+
+        <label for="username">Username:</label><br>
+        <input type="text" id="username" name="username" required><br><br>
+
+        <label for="password">Password:</label><br>
+        <input type="password" id="password" name="password" required><br><br>
+
+        <input type="submit" value="Submit">
+
+    </form>
+
+    <p>
+        Turning off autocomplete prevents the browser from storing and later suggesting
+        previously entered values (like usernames and passwords) for this form. This is
+        useful on shared or public computers, as it reduces the risk of sensitive
+        information being auto-filled or exposed to someone else using the same browser.
+    </p>
+
+</body>
+</html>

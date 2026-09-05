@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<!-- 
+  Assignment 3 - Question 1
+  Author: Abhishek Tomar
+  GitHub: https://github.com/devil2007obx-debug
+  LinkedIn: https://www.linkedin.com/in/abhishek-tomar-814693326/
+  Task: Embed a YouTube video using an iframe with percentage-based width and height.
+-->
+<html>
+<head>
+    <title>Question 1 - YouTube Video Embed</title>
+</head>
+<body>
+
+    <h1>Embedding a YouTube Video</h1>
+
+    <!-- 
+        The iframe below uses width="80%" and height="60%" (percentage values only, no pixels).
+        This makes the video frame responsive/resizable as the browser window changes size.
+        Note: height in percentage works properly only if the parent container has a defined height,
+        so for a simple standalone page you may notice the effect more clearly by resizing width.
+    -->
+    <iframe
+        src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+        width="80%"
+        height="60%"
+        title="Sample YouTube Video">
+    </iframe>
+
+</body>
+</html>

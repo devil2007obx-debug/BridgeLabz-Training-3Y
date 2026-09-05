@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<!-- 
+  Assignment 3 - Question 2
+  Author: Abhishek Tomar
+  Task: Embed a Google Map using an iframe with title, width, height, and loading="lazy".
+-->
+<html>
+<head>
+    <title>Question 2 - Google Map Embed</title>
+</head>
+<body>
+
+    <h1>My City on Google Maps</h1>
+
+    <!-- 
+        The loading="lazy" attribute tells the browser to delay loading the iframe's content
+        (the map) until the user scrolls near it on the page. This improves initial page load
+        speed and saves bandwidth, especially on pages with many embedded elements.
+    -->
+    <iframe
+        title="Google Map of My City"
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3502.US_PLACEHOLDER"
+        width="600"
+        height="450"
+        loading="lazy">
+    </iframe>
+
+    <!-- Note for student: Replace the src link above with the actual embed link 
+         of your own city/school from Google Maps (Share > Embed a map). -->
+
+</body>
+</html>

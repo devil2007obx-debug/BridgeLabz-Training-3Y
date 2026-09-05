@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<!-- 
+  Assignment 3 - Question 7
+  Author: Abhishek Tomar
+  Task: Login Form with username, password, and a hidden CSRF token field.
+-->
+<html>
+<head>
+    <title>Question 7 - Login Form</title>
+</head>
+<body>
+
+    <h1>Login Form</h1>
+
+    <form action="#" method="post">
+
+        <!-- 
+            A CSRF (Cross-Site Request Forgery) token is a unique, secret value generated
+            by the server and embedded in the form as a hidden field. When the form is
+            submitted, the server checks that this token matches the one it issued.
+            This helps confirm that the request genuinely came from the user's own session
+            and not from a malicious third-party website tricking the user's browser
+            into submitting the form without their knowledge.
+        -->
+        <input type="hidden" name="csrf_token" value="dummyCsrfToken12345">
+
+        <label for="username">Username:</label><br>
+        <input type="text" id="username" name="username" required><br><br>
+
+        <label for="password">Password:</label><br>
+        <input type="password" id="password" name="password" required><br><br>
+
+        <input type="submit" value="Login">
+
+    </form>
+
+</body>
+</html>
