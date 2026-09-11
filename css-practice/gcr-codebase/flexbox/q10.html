@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Responsive Website</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background: #222;
+            color: white;
+        }
+
+        nav {
+            display: flex;
+            gap: 20px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+        }
+
+        main {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 20px;
+            padding: 30px;
+            min-height: 70vh;
+        }
+
+        article {
+            padding: 20px;
+        }
+
+        .boxes {
+            display: flex;
+            gap: 20px;
+        }
+
+        .boxes div {
+            flex: 1;
+            padding: 40px;
+            background: lightblue;
+            text-align: center;
+        }
+
+        aside {
+            padding: 20px;
+            background: #eee;
+        }
+
+        .title {
+            animation: appear 1s;
+        }
+
+        @keyframes appear {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: #222;
+            color: white;
+        }
+
+        @media (max-width: 700px) {
+            header {
+                flex-direction: column;
+            }
+
+            nav {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            main {
+                grid-template-columns: 1fr;
+            }
+
+            .boxes {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+
+        <h2>My Website</h2>
+
+        <nav>
+            <a href="#">Home</a>
+            <a href="#">About</a>
+            <a href="#">Contact</a>
+        </nav>
+
+    </header>
+
+    <main>
+
+        <article>
+
+            <h1 class="title">Welcome to My Website</h1>
+
+            <div class="boxes">
+                <div>HTML</div>
+                <div>CSS</div>
+                <div>JavaScript</div>
+            </div>
+
+        </article>
+
+        <aside>
+            <h2>Sidebar</h2>
+            <p>Latest updates and information.</p>
+        </aside>
+
+    </main>
+
+    <footer>
+        © 2026 My Website
+    </footer>
+
+</body>
+</html>

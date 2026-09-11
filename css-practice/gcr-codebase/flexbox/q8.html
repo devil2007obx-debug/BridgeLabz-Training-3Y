@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Photo Gallery</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+
+        figure {
+            margin: 0;
+            overflow: hidden;
+        }
+
+        img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        figure:hover img {
+            transform: scale(1.05);
+        }
+
+        figcaption {
+            padding: 10px;
+            background: #eee;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Photo Gallery</h1>
+
+    <div class="gallery">
+
+        <figure>
+            <img src="https://picsum.photos/400/300?1">
+            <figcaption>Nature</figcaption>
+        </figure>
+
+        <figure>
+            <img src="https://picsum.photos/400/300?2">
+            <figcaption>Mountain</figcaption>
+        </figure>
+
+        <figure>
+            <img src="https://picsum.photos/400/300?3">
+            <figcaption>City</figcaption>
+        </figure>
+
+        <figure>
+            <img src="https://picsum.photos/400/300?4">
+            <figcaption>Forest</figcaption>
+        </figure>
+
+        <figure>
+            <img src="https://picsum.photos/400/300?5">
+            <figcaption>Beach</figcaption>
+        </figure>
+
+        <figure>
+            <img src="https://picsum.photos/400/300?6">
+            <figcaption>Sunset</figcaption>
+        </figure>
+
+    </div>
+
+</body>
+</html>

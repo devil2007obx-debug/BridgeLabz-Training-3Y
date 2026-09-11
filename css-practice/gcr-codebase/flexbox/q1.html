@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Portfolio</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background: #222;
+            color: white;
+        }
+
+        nav {
+            display: flex;
+            gap: 20px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+        }
+
+        main {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 50px;
+            min-height: 70vh;
+            padding: 30px;
+        }
+
+        .about,
+        .image {
+            flex: 1;
+            text-align: center;
+        }
+
+        .image img {
+            width: 300px;
+            max-width: 100%;
+        }
+
+        footer {
+            text-align: center;
+            padding: 15px;
+            background: #222;
+            color: white;
+        }
+
+        @media (max-width: 700px) {
+            header,
+            main {
+                flex-direction: column;
+            }
+
+            nav {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h2>Abhishek Tomar</h2>
+
+        <nav>
+            <a href="#">Home</a>
+            <a href="#">About</a>
+            <a href="#">Projects</a>
+            <a href="#">Contact</a>
+        </nav>
+    </header>
+
+    <main>
+
+        <section class="about">
+            <h1>About Me</h1>
+            <p>
+                Hello! I am Abhishek Tomar, a Computer Science student.
+                I am interested in Web Development, Cybersecurity and AI.
+            </p>
+        </section>
+
+        <section class="image">
+            <img src="https://via.placeholder.com/300" alt="My Image">
+        </section>
+
+    </main>
+
+    <footer>
+        © 2026 Abhishek Tomar
+    </footer>
+
+</body>
+</html>

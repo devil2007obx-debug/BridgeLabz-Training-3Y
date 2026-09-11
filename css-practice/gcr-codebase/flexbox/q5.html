@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Pricing Plans</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+        }
+
+        .pricing {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            padding: 40px;
+        }
+
+        .card {
+            width: 250px;
+            padding: 30px;
+            background: #eee;
+            border-radius: 10px;
+            animation: fade 1s;
+            transition: 0.3s;
+        }
+
+        .popular {
+            background: lightblue;
+            transform: scale(1.1);
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+        }
+
+        @keyframes fade {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        @media (max-width: 750px) {
+            .pricing {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .popular {
+                transform: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Pricing Plans</h1>
+
+    <div class="pricing">
+
+        <div class="card">
+            <h2>Basic</h2>
+            <h3>₹499</h3>
+            <p>5 Projects</p>
+            <p>Email Support</p>
+        </div>
+
+        <div class="card popular">
+            <h2>Pro</h2>
+            <h3>₹999</h3>
+            <p>20 Projects</p>
+            <p>Priority Support</p>
+        </div>
+
+        <div class="card">
+            <h2>Premium</h2>
+            <h3>₹1999</h3>
+            <p>Unlimited Projects</p>
+            <p>24/7 Support</p>
+        </div>
+
+    </div>
+
+</body>
+</html>

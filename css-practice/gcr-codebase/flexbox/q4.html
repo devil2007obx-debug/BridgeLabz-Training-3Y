@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial;
+        }
+
+        .dashboard {
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            grid-template-rows: 80px 1fr;
+            min-height: 100vh;
+            gap: 10px;
+        }
+
+        header {
+            grid-column: 1 / 3;
+            background: #222;
+            color: white;
+            padding: 20px;
+        }
+
+        aside {
+            background: #ddd;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        main {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .box {
+            padding: 40px;
+            background: lightblue;
+            transition: 0.3s;
+        }
+
+        .large {
+            grid-column: span 2;
+        }
+
+        .box:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px gray;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="dashboard">
+
+        <header>
+            <h2>My Dashboard</h2>
+        </header>
+
+        <aside>
+            <a href="#">Home</a>
+            <a href="#">Users</a>
+            <a href="#">Reports</a>
+            <a href="#">Settings</a>
+        </aside>
+
+        <main>
+            <div class="box">Users</div>
+            <div class="box">Sales</div>
+            <div class="box large">Reports</div>
+            <div class="box">Messages</div>
+        </main>
+
+    </div>
+
+</body>
+</html>
