@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Typography and Text Styling</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: #fdfcf9;
+    color: #26241f;
+  }
+  header, footer {
+    text-align: center;
+    padding: 1rem;
+    background: #26241f;
+    color: #fdfcf9;
+  }
+  main {
+    max-width: 640px;
+    margin: 0 auto;
+    padding: 3rem 1.5rem;
+  }
+
+  h1.title {
+    font-family: Georgia, "Times New Roman", serif;
+    font-weight: 700;
+    font-size: 2.2rem;
+    letter-spacing: 0.01em;
+    line-height: 1.2;
+  }
+
+  .subtitle {
+    font-family: "Segoe UI", Arial, sans-serif;
+    font-weight: 300;
+    font-size: 1rem;
+    letter-spacing: 0.05em;
+    color: #6b6656;
+    margin-top: -0.5rem;
+  }
+
+  article {
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 1.05rem;
+    line-height: 1.8;         /* generous line-height for readability */
+    letter-spacing: 0.01em;
+    text-align: left;
+  }
+
+  /* Drop-cap style first letter of the article */
+  article p:first-of-type::first-letter {
+    font-size: 3.2rem;
+    font-weight: bold;
+    float: left;
+    line-height: 1;
+    padding-right: 0.4rem;
+    color: #a6480e;
+  }
+
+  /* Style the first line of the article differently */
+  article p:first-of-type::first-line {
+    font-weight: 600;
+    font-variant: small-caps;
+  }
+
+  mark {
+    background: #f2cc8f;
+    color: #26241f;
+    padding: 0 0.2rem;
+  }
+  strong { color: #a6480e; }
+  em { color: #4a7c59; font-style: italic; }
+
+  .fonts-demo p { margin: 0.4rem 0; }
+  .fonts-demo .serif   { font-family: Georgia, serif; }
+  .fonts-demo .sans    { font-family: "Segoe UI", Arial, sans-serif; }
+  .fonts-demo .mono    { font-family: "Consolas", monospace; }
+  .fonts-demo .light   { font-weight: 300; }
+  .fonts-demo .bold    { font-weight: 700; }
+  .fonts-demo .large   { font-size: 1.4rem; }
+  .fonts-demo .small   { font-size: 0.8rem; }
+</style>
+</head>
+<body>
+<header><h1>Typography Study</h1></header>
+
+<main>
+  <h1 class="title">On the Quiet Discipline of Reading</h1>
+  <p class="subtitle">A short piece on typography and legibility</p>
+
+  <article>
+    <p>
+      Reading well-set text feels effortless, but that ease is built from
+      careful choices: a generous <strong>line-height</strong> that gives the
+      eye room to travel from one line to the next, comfortable
+      <em>letter-spacing</em> so words neither crowd nor drift apart, and
+      alignment that keeps every line settling naturally against the left
+      edge. Notice how the first letter of this paragraph is enlarged, and
+      the first line is styled differently, using the
+      <mark>::first-letter</mark> and <mark>::first-line</mark>
+      pseudo-elements.
+    </p>
+    <p>
+      Good typography rarely calls attention to itself. It simply gets out
+      of the way, letting the content carry the page.
+    </p>
+  </article>
+
+  <section class="fonts-demo">
+    <h2>Font Families, Weights &amp; Sizes</h2>
+    <p class="serif large">Serif, large size</p>
+    <p class="sans bold">Sans-serif, bold weight</p>
+    <p class="mono small">Monospace, small size</p>
+    <p class="serif light">Serif, light weight</p>
+  </section>
+</main>
+
+<footer><p>Assignment 7 &mdash; Question 7</p></footer>
+</body>
+</html>

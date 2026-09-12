@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Advanced CSS Selectors</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: #fbfaf7;
+    color: #2b2b2b;
+    padding: 2rem;
+  }
+  header, footer { text-align: center; padding: 1rem; }
+  main { max-width: 700px; margin: 0 auto; }
+  h2 { border-bottom: 2px solid #444; padding-bottom: 0.3rem; }
+
+  /* --- Attribute selectors --- */
+  /* Targets any text input specifically */
+  input[type="text"] {
+    border: 2px solid #4a7c59;
+    padding: 0.4rem;
+  }
+  /* Targets links whose href starts with https */
+  a[href^="https"] {
+    color: #b3541e;
+    font-weight: bold;
+  }
+  a[href^="https"]::after {
+    content: " (secure)"; /* pseudo-element adds a label after secure links */
+    font-size: 0.75rem;
+    color: #777;
+  }
+
+  /* --- Pseudo-classes --- */
+  ul.item-list { list-style: none; padding: 0; }
+  ul.item-list li {
+    padding: 0.6rem 1rem;
+    margin-bottom: 0.4rem;
+    background: #eef0ea;
+    border-radius: 4px;
+  }
+  /* :hover changes background on the item under the cursor */
+  ul.item-list li:hover { background: #d8e2d0; }
+  /* :nth-child(even) stripes every second item */
+  ul.item-list li:nth-child(even) { border-left: 4px solid #4a7c59; }
+  ul.item-list li:nth-child(odd)  { border-left: 4px solid #b3541e; }
+  /* :focus highlights the text input when active */
+  input[type="text"]:focus { outline: none; border-color: #b3541e; }
+
+  /* --- Pseudo-elements --- */
+  /* ::before adds a decorative marker in front of each heading */
+  h2::before { content: "» "; color: #b3541e; }
+  /* ::after already used above on secure links */
+
+  /* --- Combinators --- */
+  /* Descendant combinator: any <span> inside .note, at any depth */
+  .note span { font-style: italic; color: #555; }
+  /* Child combinator (>) : only direct <li> children of this specific list */
+  ul.combinator-demo > li { color: #2b2b2b; }
+  ul.combinator-demo > li > ul li { color: #999; } /* nested list styled differently */
+  /* Adjacent sibling combinator (+) : paragraph immediately after the note */
+  .note + p { font-weight: bold; }
+  /* General sibling combinator (~) : every paragraph after .note (not just the first) */
+  .note ~ p { border-left: 3px solid #4a7c59; padding-left: 0.6rem; }
+</style>
+</head>
+<body>
+<header><h1>Advanced CSS Selectors Demo</h1></header>
+
+<main>
+  <section>
+    <h2>Attribute Selectors</h2>
+    <input type="text" placeholder="Styled via [type='text']"><br><br>
+    <a href="https://example.com">Secure link example</a>
+  </section>
+
+  <section>
+    <h2>Pseudo-classes &amp; Pseudo-elements</h2>
+    <ul class="item-list">
+      <li>Item one (odd, orange edge)</li>
+      <li>Item two (even, green edge)</li>
+      <li>Item three (odd, hover me)</li>
+      <li>Item four (even, hover me)</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Combinators</h2>
+    <p class="note">This is a note containing a <span>highlighted phrase</span> inside it.</p>
+    <p>This paragraph is bold because it directly follows .note (adjacent sibling +).</p>
+    <p>This paragraph has a left border because it is a later sibling of .note (general sibling ~).</p>
+
+    <ul class="combinator-demo">
+      <li>Direct child item
+        <ul>
+          <li>Nested item (styled differently, descendant only)</li>
+        </ul>
+      </li>
+      <li>Another direct child item</li>
+    </ul>
+  </section>
+</main>
+
+<footer><p>Assignment 7 &mdash; Question 5</p></footer>
+</body>
+</html>

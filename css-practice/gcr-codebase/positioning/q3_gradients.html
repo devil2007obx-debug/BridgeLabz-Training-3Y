@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Gradient Background Webpage</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: "Segoe UI", Arial, sans-serif;
+    color: #ffffff;
+  }
+
+  header, footer {
+    position: sticky;
+    background: #10121a;
+    padding: 1rem 2rem;
+    text-align: center;
+    z-index: 2;
+  }
+  header { top: 0; }
+  footer { bottom: 0; }
+
+  /* Section 1: linear gradient, fixed background creates a parallax feel */
+  .linear-section {
+    min-height: 70vh;
+    background: linear-gradient(135deg, #1a2980, #26d0ce);
+    background-attachment: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 2rem;
+  }
+
+  /* Section 2: radial gradient, normal scrolling background */
+  .radial-section {
+    min-height: 70vh;
+    background: radial-gradient(circle at center, #ff9966, #ff5e62 60%, #7b2f4a 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 2rem;
+  }
+
+  .content-box {
+    max-width: 500px;
+    background: rgba(0, 0, 0, 0.25);
+    padding: 2rem;
+    border-radius: 10px;
+    backdrop-filter: blur(2px);
+  }
+
+  h2 { margin-top: 0; }
+</style>
+</head>
+<body>
+<header><h1>Gradient Background Webpage</h1></header>
+
+<section class="linear-section">
+  <div class="content-box">
+    <h2>Linear Gradient</h2>
+    <p>
+      This section transitions smoothly in a straight diagonal line from deep
+      blue to teal. The background is fixed in place (background-attachment:
+      fixed), so it stays still as the page scrolls, creating a subtle
+      parallax effect.
+    </p>
+  </div>
+</section>
+
+<section class="radial-section">
+  <div class="content-box">
+    <h2>Radial Gradient</h2>
+    <p>
+      This section radiates outward from a central point, moving from warm
+      orange at the center to deep red-purple at the edges, like light
+      spreading from a source.
+    </p>
+  </div>
+</section>
+
+<footer><p>Assignment 7 &mdash; Question 3</p></footer>
+</body>
+</html>

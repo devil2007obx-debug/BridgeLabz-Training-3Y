@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Box Model Exploration</title>
+<style>
+  body {
+    margin: 0;
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: #f7f5f2;
+    color: #2b2b2b;
+  }
+  header, footer { text-align: center; padding: 1rem; background: #2b2b2b; color: #f7f5f2; }
+
+  main {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 3rem;
+    flex-wrap: wrap;
+    padding: 3rem 1rem;
+  }
+
+  .diagram-wrap { text-align: center; }
+
+  /* Margin layer: outlined, transparent, no box-sizing applied */
+  .margin-layer {
+    outline: 2px dashed #b3541e;
+    margin: 20px;
+    display: inline-block;
+  }
+  .margin-layer::before {
+    content: "margin";
+    display: block;
+    color: #b3541e;
+    font-size: 0.75rem;
+    margin-bottom: 4px;
+  }
+
+  /* Border layer */
+  .border-layer {
+    border: 10px solid #4a7c59;
+    display: block;
+  }
+
+  /* Padding layer */
+  .padding-layer {
+    background: #f2cc8f;
+    padding: 20px;
+    display: block;
+  }
+
+  /* Content layer */
+  .content-layer {
+    background: #4f9dde;
+    color: #fff;
+    width: 140px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.85rem;
+  }
+
+  /* --- box-sizing comparison --- */
+  .compare-row { display: flex; gap: 2rem; margin-top: 1rem; flex-wrap: wrap; justify-content: center; }
+  .compare-box {
+    width: 200px;
+    padding: 20px;
+    border: 8px solid #7a3e65;
+    background: #e8d9e3;
+    text-align: center;
+  }
+  .content-box-sizing { box-sizing: content-box; } /* width applies to content only; total grows */
+  .border-box-sizing  { box-sizing: border-box; }   /* width includes padding + border */
+
+  .legend p { margin: 0.3rem 0; font-size: 0.9rem; }
+</style>
+</head>
+<body>
+<header><h1>Box Model Exploration</h1></header>
+
+<main>
+  <div class="diagram-wrap">
+    <h2>The Four Layers</h2>
+    <div class="margin-layer">
+      <div class="border-layer">
+        <div class="padding-layer">
+          <div class="content-layer">Content</div>
+        </div>
+      </div>
+    </div>
+    <div class="legend" style="text-align:left; max-width:260px; margin-top:1rem;">
+      <p><strong style="color:#4f9dde;">Content</strong> — the actual text or elements inside the box.</p>
+      <p><strong style="color:#f2cc8f;">Padding</strong> — space between content and border.</p>
+      <p><strong style="color:#4a7c59;">Border</strong> — the visible edge surrounding the padding.</p>
+      <p><strong style="color:#b3541e;">Margin</strong> — transparent space outside the border, separating this box from others.</p>
+    </div>
+  </div>
+
+  <div class="diagram-wrap">
+    <h2>content-box vs border-box</h2>
+    <div class="compare-row">
+      <div class="compare-box content-box-sizing">
+        <strong>content-box</strong><br>
+        width: 200px applies only to the content; padding and border are added
+        on top, so the box renders wider than 200px total.
+      </div>
+      <div class="compare-box border-box-sizing">
+        <strong>border-box</strong><br>
+        width: 200px includes padding and border, so the box stays exactly
+        200px wide overall.
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer><p>Assignment 7 &mdash; Question 8</p></footer>
+</body>
+</html>

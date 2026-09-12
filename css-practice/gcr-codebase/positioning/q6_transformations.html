@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>CSS Transformations Showcase</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: #1c1c26;
+    color: #f4f4f4;
+  }
+  header, footer { text-align: center; padding: 1rem; background: #101018; }
+  main {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 3rem;
+    flex-wrap: wrap;
+    padding: 4rem 2rem;
+  }
+  .demo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .box {
+    width: 100px;
+    height: 100px;
+    background: #4f9dde;
+    border-radius: 8px;
+    transition: all 0.4s ease; /* smooth animation for every transform */
+  }
+  .demo p { margin-top: 1.5rem; font-size: 0.9rem; color: #c7c7d1; }
+
+  .rotate:hover    { transform: rotate(45deg); background: #e07a5f; }
+  .scale:hover     { transform: scale(1.4); background: #81b29a; }
+  .translate:hover { transform: translateY(-30px); background: #f2cc8f; }
+  .skew:hover      { transform: skew(20deg, 5deg); background: #c74e8b; }
+</style>
+</head>
+<body>
+<header><h1>CSS Transformations Showcase</h1></header>
+
+<main>
+  <div class="demo">
+    <div class="box rotate"></div>
+    <p>rotate(45deg) on hover</p>
+  </div>
+  <div class="demo">
+    <div class="box scale"></div>
+    <p>scale(1.4) on hover</p>
+  </div>
+  <div class="demo">
+    <div class="box translate"></div>
+    <p>translateY(-30px) on hover</p>
+  </div>
+  <div class="demo">
+    <div class="box skew"></div>
+    <p>skew(20deg, 5deg) on hover</p>
+  </div>
+</main>
+
+<footer><p>Assignment 7 &mdash; Question 6</p></footer>
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Shadows and Depth Effect Layout</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: #eef1f5;
+    color: #22283a;
+  }
+  header, footer {
+    background: #22283a;
+    color: #eef1f5;
+    text-align: center;
+    padding: 1rem;
+  }
+  main {
+    padding: 3rem 2rem;
+  }
+
+  /* Cards arranged in a single row with Flexbox */
+  .card-row {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+
+  .card {
+    background: #ffffff;
+    width: 240px;
+    border-radius: 12px;
+    padding: 1.5rem;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* smooth lift on hover */
+  }
+
+  /* Distinct box-shadow styles per card */
+  .card-soft   { box-shadow: 0 4px 10px rgba(0,0,0,0.12); }
+  .card-sharp  { box-shadow: 4px 4px 0 rgba(34,40,58,0.9); }
+  .card-glow   { box-shadow: 0 0 20px rgba(230,126,34,0.5); }
+
+  /* Lift effect: larger shadow + slight upward translate on hover */
+  .card-soft:hover  { transform: translateY(-8px); box-shadow: 0 16px 28px rgba(0,0,0,0.22); }
+  .card-sharp:hover { transform: translateY(-8px); box-shadow: 8px 12px 0 rgba(34,40,58,0.9); }
+  .card-glow:hover  { transform: translateY(-8px); box-shadow: 0 0 40px rgba(230,126,34,0.85); }
+
+  .card h3 {
+    margin-top: 0;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.25); /* text-shadow for depth on headings */
+  }
+  .card p { color: #55607a; line-height: 1.5; }
+</style>
+</head>
+<body>
+<header><h1>Shadows &amp; Depth Effect Layout</h1></header>
+
+<main>
+  <div class="card-row">
+    <div class="card card-soft">
+      <h3>Soft Shadow</h3>
+      <p>A gentle, diffused drop shadow that suggests the card floats slightly above the page.</p>
+    </div>
+    <div class="card card-sharp">
+      <h3>Hard Offset Shadow</h3>
+      <p>A crisp, solid-color offset shadow that gives a bold, sticker-like appearance.</p>
+    </div>
+    <div class="card card-glow">
+      <h3>Glow Shadow</h3>
+      <p>A colored, blurred shadow that surrounds the card like a soft light source.</p>
+    </div>
+  </div>
+</main>
+
+<footer><p>Assignment 7 &mdash; Question 4</p></footer>
+</body>
+</html>

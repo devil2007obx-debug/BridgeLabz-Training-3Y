@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Height and Width Practice</title>
+<style>
+  * { box-sizing: border-box; }
+  html, body { height: 100%; margin: 0; }
+  body {
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: #12181f;
+    color: #eef2f6;
+    display: flex;
+    flex-direction: column;
+  }
+  header, footer {
+    background: #0a0e13;
+    padding: 1rem;
+    text-align: center;
+  }
+
+  /* Main area centers the three boxes both vertically and horizontally */
+  main {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+    padding: 2rem;
+  }
+
+  .box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 1rem;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    overflow: auto; /* demonstrates overflow handling when content is too big */
+  }
+
+  /* Box A: fixed pixel dimensions */
+  .box-a {
+    width: 220px;
+    height: 220px;
+    background: #e07a5f;
+    color: #1a1a1a;
+  }
+
+  /* Box B: percentage width relative to main, viewport height unit */
+  .box-b {
+    width: 30%;
+    min-width: 160px;
+    height: 40vh;
+    max-width: 320px;
+    background: #81b29a;
+    color: #1a1a1a;
+  }
+
+  /* Box C: em-based sizing plus min-height / max-width / overflow demo */
+  .box-c {
+    width: 16em;
+    min-height: 8em;
+    max-width: 260px;
+    background: #f2cc8f;
+    color: #1a1a1a;
+    overflow-y: auto;
+  }
+
+  .box h3 { margin: 0 0 0.5rem; }
+  .box p { margin: 0; line-height: 1.4; }
+</style>
+</head>
+<body>
+<header><h1>Height &amp; Width Practice Layout</h1></header>
+
+<main>
+  <div class="box box-a">
+    <h3>Box A</h3>
+    <p>width: 220px<br>height: 220px<br>(fixed px units)</p>
+  </div>
+
+  <div class="box box-b">
+    <h3>Box B</h3>
+    <p>width: 30% (min 160px, max 320px)<br>height: 40vh<br>(percentage + viewport units)</p>
+  </div>
+
+  <div class="box box-c">
+    <h3>Box C</h3>
+    <p>
+      width: 16em<br>min-height: 8em<br>max-width: 260px<br>
+      Extra text is added here on purpose so that if the box's content grows
+      taller than its min-height, the overflow-y: auto rule lets it scroll
+      instead of breaking the layout.
+    </p>
+  </div>
+</main>
+
+<footer><p>Assignment 7 &mdash; Question 2</p></footer>
+</body>
+</html>
