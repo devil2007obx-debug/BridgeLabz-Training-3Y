@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Q2. String Manipulation Report</title>
+<style>
+* { box-sizing: border-box; }
+body { margin: 0; min-height: 100vh; display: grid; place-items: center; padding: 24px; font-family: Arial, sans-serif; background: linear-gradient(135deg,#e8f0ff,#f8faff); color: #172033; }
+.card { width: min(100%, 680px); background: white; border: 1px solid #dce4f2; border-radius: 18px; padding: 28px; box-shadow: 0 12px 35px rgba(26,45,85,.10); }
+h1 { font-size: 1.55rem; margin: 0 0 10px; }
+p { line-height: 1.5; color: #58657a; }
+button { border: 0; border-radius: 9px; background: #2457d6; color: white; font-weight: 700; padding: 11px 16px; cursor: pointer; margin: 8px 8px 8px 0; }
+button:hover { background: #1944ad; }
+button.secondary { background: #526078; }
+.checks { display: grid; gap: 12px; margin: 18px 0; }
+label { display: block; margin: 10px 0; }
+textarea { width: 100%; min-height: 95px; padding: 12px; border: 1px solid #cbd5e1; border-radius: 9px; font: inherit; }
+pre { white-space: pre-wrap; overflow-wrap: anywhere; background: #101827; color: #e6edf7; padding: 18px; border-radius: 12px; min-height: 70px; line-height: 1.55; }
+.hint { font-size: .88rem; }
+</style>
+</head>
+<body>
+<main class="card">
+<h1>Q2. String Manipulation Report</h1>
+<p>Trims spaces, capitalizes each word, replaces Pro with Pro Edition, and displays the final length.</p>
+
+<button onclick="run()">Run code</button>
+<pre id="output">Click “Run code” to see the result.</pre>
+<p class="hint">All HTML, CSS, and JavaScript are combined in this single file. Open it in Chrome, Edge, or Firefox.</p>
+</main>
+<script>
+
+function run() {
+  const productName = " wireless headphones PRO ";
+  const trimmed = productName.trim().toLowerCase();
+
+  // Capitalize the first letter of each word.
+  let title = trimmed.split(" ")
+    .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(" ");
+
+  // Replace the word Pro with Pro Edition.
+  title = title.replace("Pro", "Pro Edition");
+
+  document.getElementById("output").textContent =
+    `Original: "${productName}"\n` +
+    `Cleaned title: ${title}\n` +
+    `Title length: ${title.length} characters`;
+}
+
+</script>
+</body>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Q8. Dynamic Discount Evaluator</title>
+<style>
+* { box-sizing: border-box; }
+body { margin: 0; min-height: 100vh; display: grid; place-items: center; padding: 24px; font-family: Arial, sans-serif; background: linear-gradient(135deg,#e8f0ff,#f8faff); color: #172033; }
+.card { width: min(100%, 680px); background: white; border: 1px solid #dce4f2; border-radius: 18px; padding: 28px; box-shadow: 0 12px 35px rgba(26,45,85,.10); }
+h1 { font-size: 1.55rem; margin: 0 0 10px; }
+p { line-height: 1.5; color: #58657a; }
+button { border: 0; border-radius: 9px; background: #2457d6; color: white; font-weight: 700; padding: 11px 16px; cursor: pointer; margin: 8px 8px 8px 0; }
+button:hover { background: #1944ad; }
+button.secondary { background: #526078; }
+.checks { display: grid; gap: 12px; margin: 18px 0; }
+label { display: block; margin: 10px 0; }
+textarea { width: 100%; min-height: 95px; padding: 12px; border: 1px solid #cbd5e1; border-radius: 9px; font: inherit; }
+pre { white-space: pre-wrap; overflow-wrap: anywhere; background: #101827; color: #e6edf7; padding: 18px; border-radius: 12px; min-height: 70px; line-height: 1.55; }
+.hint { font-size: .88rem; }
+</style>
+</head>
+<body>
+<main class="card">
+<h1>Q8. Dynamic Discount Evaluator</h1>
+<p>Applies category discounts and an extra 5% if the original cart subtotal exceeds ₹50,000.</p>
+
+<button onclick="run()">Run code</button>
+<pre id="output">Click “Run code” to see the result.</pre>
+<p class="hint">All HTML, CSS, and JavaScript are combined in this single file. Open it in Chrome, Edge, or Firefox.</p>
+</main>
+<script>
+
+function run() {
+  const cart = [
+    { item: "Laptop", category: "electronics", price: 45000 },
+    { item: "Shoes", category: "fashion", price: 2500 },
+    { item: "Book", category: "education", price: 600 }
+  ];
+
+  const subtotal = cart.reduce((sum, product) => sum + product.price, 0);
+  let discountedTotal = 0;
+  const lines = [];
+
+  for (const product of cart) {
+    let rate = 0;
+    if (product.category === "electronics") rate = 0.10;
+    else if (product.category === "fashion") rate = 0.05;
+
+    const discount = product.price * rate;
+    const finalPrice = product.price - discount;
+    discountedTotal += finalPrice;
+    lines.push(`${product.item}: ₹${product.price.toLocaleString("en-IN")} | ` +
+      `${rate * 100}% discount = ₹${finalPrice.toLocaleString("en-IN")}`);
+  }
+
+  const extraDiscount = subtotal > 50000 ? discountedTotal * 0.05 : 0;
+  const finalTotal = discountedTotal - extraDiscount;
+
+  document.getElementById("output").textContent =
+    `${lines.join("\n")}\n\n` +
+    `Cart subtotal before discounts: ₹${subtotal.toLocaleString("en-IN")}\n` +
+    `Extra 5% overall discount: ₹${extraDiscount.toLocaleString("en-IN")}\n` +
+    `Final total: ₹${finalTotal.toLocaleString("en-IN")}`;
+}
+
+</script>
+</body>
+</html>
