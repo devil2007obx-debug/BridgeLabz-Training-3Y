@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Q6 – Pyramid Pattern Generator</title><style>
+*{box-sizing:border-box}body{margin:0;min-height:100vh;display:grid;place-items:center;padding:24px;background:#edf2fb;font-family:Arial,sans-serif;color:#172033}
+main{width:min(100%,760px);background:#fff;padding:28px;border:1px solid #d9e2f0;border-radius:16px;box-shadow:0 12px 32px #15294b18}
+h1{font-size:1.5rem;margin-top:0}p{line-height:1.5;color:#59667b}label{display:block;margin:12px 0 6px}
+input,select{width:100%;max-width:360px;padding:10px;border:1px solid #c8d2e1;border-radius:8px;font:inherit}
+button{margin:16px 0;background:#2457d6;color:white;border:0;border-radius:8px;padding:11px 18px;font-weight:bold;cursor:pointer}
+pre{background:#111827;color:#e5edf8;padding:18px;border-radius:10px;white-space:pre-wrap;overflow-wrap:anywhere;line-height:1.5;min-height:72px}
+small{color:#64748b}
+</style></head><body><main>
+<h1>Q6 – Pyramid Pattern Generator</h1><p>Enter a row count (default 5) to generate the star pyramid.</p><label for="limit">Rows (default 5)</label><input id="limit" type="number" min="1" max="20" value="5">
+<button onclick="run()">Run code</button><pre id="output">Click “Run code” to see output.</pre>
+<small>HTML, internal CSS, and JavaScript are combined in this file. Output is displayed on the page and with console.log().</small>
+</main><script>
+"use strict";
+function run(){
+ let limit=Number(document.getElementById("limit").value);if(!Number.isInteger(limit)||limit<1)limit=5;limit=Math.min(limit,20);
+ let pattern="";for(let row=1;row<=limit;row++){let line="";for(let col=1;col<=row;col++)line+="* ";pattern+=line.trimEnd()+"\n";}
+ const result=`Pyramid (${limit} rows):\n${pattern}\nlet is block-scoped. var is function-scoped and reused across loop iterations. Strict mode catches undeclared variables, but does not prohibit var.`;
+ console.log(result);document.getElementById("output").textContent=result;
+}</script></body></html>

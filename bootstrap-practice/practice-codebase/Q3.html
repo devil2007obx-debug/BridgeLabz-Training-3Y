@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Q3 – Transaction Validator</title><style>
+*{box-sizing:border-box}body{margin:0;min-height:100vh;display:grid;place-items:center;padding:24px;background:#edf2fb;font-family:Arial,sans-serif;color:#172033}
+main{width:min(100%,760px);background:#fff;padding:28px;border:1px solid #d9e2f0;border-radius:16px;box-shadow:0 12px 32px #15294b18}
+h1{font-size:1.5rem;margin-top:0}p{line-height:1.5;color:#59667b}label{display:block;margin:12px 0 6px}
+input,select{width:100%;max-width:360px;padding:10px;border:1px solid #c8d2e1;border-radius:8px;font:inherit}
+button{margin:16px 0;background:#2457d6;color:white;border:0;border-radius:8px;padding:11px 18px;font-weight:bold;cursor:pointer}
+pre{background:#111827;color:#e5edf8;padding:18px;border-radius:10px;white-space:pre-wrap;overflow-wrap:anywhere;line-height:1.5;min-height:72px}
+small{color:#64748b}
+</style></head><body><main>
+<h1>Q3 – Transaction Validator</h1><p>Validates transactions and categorizes null, missing-field, and negative-amount errors.</p>
+<button onclick="run()">Run code</button><pre id="output">Click “Run code” to see output.</pre>
+<small>HTML, internal CSS, and JavaScript are combined in this file. Output is displayed on the page and with console.log().</small>
+</main><script>
+"use strict";
+function run(){
+ const transactions=[{id:1,amount:2000},{id:2,amount:-500},{id:3},null],valid=[],invalid=[];
+ for(const t of transactions){try{
+  if(t===null){const e=new Error("Null transaction");e.name="NullTransactionError";throw e;}
+  if(t.id===undefined||t.amount===undefined){const e=new Error("Missing id or amount");e.name="MissingFieldError";throw e;}
+  if(t.amount<0){const e=new Error("Negative amount");e.name="NegativeAmountError";throw e;}
+  valid.push(t);
+ }catch(e){invalid.push(`${e.name}: ${e.message}`);}}
+ const result="VALID:\n"+valid.map(t=>`ID ${t.id}: ${t.amount}`).join("\n")+"\n\nINVALID:\n"+invalid.join("\n")+`\n\nSuccessful: ${valid.length}\nFailed: ${invalid.length}\nDebug: set a breakpoint inside the loop and inspect t, valid, and invalid.`;
+ console.log(result);document.getElementById("output").textContent=result;
+}</script></body></html>
