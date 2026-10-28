@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Theme Switcher</title>
+  <style>
+    body { font-family: Arial, sans-serif; min-height: 100vh; margin: 0; padding: 40px; box-sizing: border-box; transition: background .2s, color .2s; }
+    body[data-theme="light"] { background: #fff; color: #222; }
+    body[data-theme="dark"] { background: #171717; color: #f5f5f5; }
+    body[data-theme="blue"] { background: #dceeff; color: #10345a; }
+    button { margin: 6px; padding: 10px 16px; cursor: pointer; }
+    #theme-status { font-weight: bold; }
+  </style>
+</head>
+<body data-theme="light" data-current-theme="light">
+  <h1>Theme Switcher</h1>
+  <p>Choose a theme using the buttons below.</p>
+  <button type="button" data-theme-choice="light">Light</button>
+  <button type="button" data-theme-choice="dark">Dark</button>
+  <button type="button" data-theme-choice="blue">Blue</button>
+  <p>Current theme: <span id="theme-status">Light</span></p>
+
+  <script>
+    const themeButtons = document.querySelectorAll("[data-theme-choice]");
+    const themeStatus = document.getElementById("theme-status");
+
+    function applyTheme(themeName) {
+      // setAttribute is used for both the theme and the saved custom attribute.
+      document.body.setAttribute("data-theme", themeName);
+      document.body.setAttribute("data-current-theme", themeName);
+      themeStatus.textContent = themeName.charAt(0).toUpperCase() + themeName.slice(1);
+    }
+
+    themeButtons.forEach((button) => {
+      button.addEventListener("click", () => applyTheme(button.dataset.themeChoice));
+    });
+  </script>
+</body>
+</html>

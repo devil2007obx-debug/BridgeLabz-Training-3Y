@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Custom Dropdown</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 40px; }
+    .dropdown { position: relative; display: inline-block; width: 240px; }
+    #dropdown-button { width: 100%; padding: 12px; text-align: left; cursor: pointer; }
+    #dropdown-options { display: none; position: absolute; top: 100%; left: 0; right: 0; border: 1px solid #aaa; background: white; z-index: 1; }
+    #dropdown-options.open { display: block; }
+    .option { padding: 10px 12px; cursor: pointer; }
+    .option:hover, .option:focus { background: #e5efff; outline: none; }
+  </style>
+</head>
+<body>
+  <h1>Custom Dropdown (No select tag)</h1>
+  <div class="dropdown" id="dropdown">
+    <button id="dropdown-button" type="button" aria-haspopup="listbox" aria-expanded="false">Choose an option ▾</button>
+    <div id="dropdown-options" role="listbox">
+      <div class="option" role="option" tabindex="0" data-value="html">HTML</div>
+      <div class="option" role="option" tabindex="0" data-value="css">CSS</div>
+      <div class="option" role="option" tabindex="0" data-value="javascript">JavaScript</div>
+      <div class="option" role="option" tabindex="0" data-value="python">Python</div>
+    </div>
+  </div>
+  <p id="selection">No option selected.</p>
+
+  <script>
+    const dropdown = document.getElementById("dropdown");
+    const dropdownButton = document.getElementById("dropdown-button");
+    const dropdownOptions = document.getElementById("dropdown-options");
+    const selection = document.getElementById("selection");
+
+    function closeDropdown() {
+      dropdownOptions.classList.remove("open");
+      dropdownButton.setAttribute("aria-expanded", "false");
+    }
+
+    dropdownButton.addEventListener("click", () => {
+      const isOpen = dropdownOptions.classList.toggle("open");
+      dropdownButton.setAttribute("aria-expanded", String(isOpen));
+    });
+
+    dropdownOptions.addEventListener("click", (event) => {
+      const option = event.target.closest(".option");
+      if (!option) return;
+      dropdownButton.textContent = `${option.textContent} ▾`;
+      selection.textContent = `Selected: ${option.textContent}`;
+      closeDropdown();
+    });
+
+    dropdownOptions.addEventListener("keydown", (event) => {
+      if (event.key === "Enter" || event.key === " ") {
+        const option = event.target.closest(".option");
+        if (option) {
+          event.preventDefault();
+          option.click();
+        }
+      }
+    });
+
+    // Capturing phase: this listener runs before target/bubble listeners.
+    // If the click is outside the dropdown, close it.
+    document.addEventListener("click", (event) => {
+      if (!dropdown.contains(event.target)) closeDropdown();
+    }, true);
+  </script>
+</body>
+</html>

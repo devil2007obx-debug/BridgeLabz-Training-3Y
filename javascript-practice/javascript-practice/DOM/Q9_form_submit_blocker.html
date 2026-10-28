@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Form Submit Blocker with Live Errors</title>
+  <style>
+    body { font-family: Arial, sans-serif; max-width: 500px; margin: 40px auto; padding: 0 16px; }
+    label { display: block; margin-top: 14px; }
+    input { box-sizing: border-box; width: 100%; padding: 10px; margin-top: 5px; }
+    .error { color: #b00020; font-size: .9rem; min-height: 1.1em; }
+    #success { color: green; font-weight: bold; }
+    button { margin-top: 14px; padding: 10px 16px; }
+  </style>
+</head>
+<body>
+  <h1>Form Submit Blocker</h1>
+  <form id="signup-form" novalidate>
+    <label for="name">Name</label>
+    <input id="name" name="name" autocomplete="name">
+    <div class="error" id="name-error"></div>
+
+    <label for="email">Email</label>
+    <input id="email" name="email" type="email" autocomplete="email">
+    <div class="error" id="email-error"></div>
+
+    <label for="password">Password</label>
+    <input id="password" name="password" type="password" autocomplete="new-password">
+    <div class="error" id="password-error"></div>
+
+    <button type="submit">Submit</button>
+  </form>
+  <p id="success" aria-live="polite"></p>
+
+  <script>
+    const form = document.getElementById("signup-form");
+    const nameInput = document.getElementById("name");
+    const emailInput = document.getElementById("email");
+    const passwordInput = document.getElementById("password");
+    const successMessage = document.getElementById("success");
+
+    function validateField(input) {
+      const value = input.value.trim();
+      let errorMessage = "";
+
+      if (input.id === "name" && !value) {
+        errorMessage = "Name is required.";
+      } else if (input.id === "email" && (!value || !value.includes("@"))) {
+        errorMessage = "Enter an email containing @.";
+      } else if (input.id === "password" && input.value.length < 6) {
+        errorMessage = "Password must be at least 6 characters.";
+      }
+
+      document.getElementById(`${input.id}-error`).textContent = errorMessage;
+      return errorMessage === "";
+    }
+
+    [nameInput, emailInput, passwordInput].forEach((input) => {
+      input.addEventListener("input", () => {
+        validateField(input);
+        successMessage.textContent = "";
+      });
+    });
+
+    form.addEventListener("submit", (event) => {
+      event.preventDefault(); // Stop the browser's normal form submission.
+
+      const fieldsAreValid = [nameInput, emailInput, passwordInput]
+        .map(validateField)
+        .every(Boolean);
+
+      if (!fieldsAreValid) {
+        successMessage.textContent = "";
+        return;
+      }
+
+      successMessage.textContent = "Form Submitted Successfully";
+      form.reset();
+      [nameInput, emailInput, passwordInput].forEach((input) => {
+        document.getElementById(`${input.id}-error`).textContent = "";
+      });
+    });
+  </script>
+</body>
+</html>

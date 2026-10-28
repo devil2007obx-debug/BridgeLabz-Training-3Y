@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Real-Time Student Table Filter</title>
+  <style>
+    body { font-family: Arial, sans-serif; max-width: 750px; margin: 35px auto; padding: 0 16px; }
+    input { box-sizing: border-box; width: 100%; padding: 10px; margin-bottom: 14px; }
+    table { width: 100%; border-collapse: collapse; }
+    th, td { border: 1px solid #ccc; padding: 10px; text-align: left; }
+    th { background: #eee; }
+    #no-results { display: none; color: #b00020; font-weight: bold; }
+  </style>
+</head>
+<body>
+  <h1>Student Table Filter</h1>
+  <input id="search" type="search" placeholder="Search name, branch, or CGPA..." aria-label="Search students">
+  <table>
+    <thead>
+      <tr><th>Name</th><th>Branch</th><th>CGPA</th></tr>
+    </thead>
+    <tbody id="student-rows">
+      <tr><td>Abhishek</td><td>CSE</td><td>8.5</td></tr>
+      <tr><td>Priya</td><td>ECE</td><td>9.1</td></tr>
+      <tr><td>Rahul</td><td>IT</td><td>7.8</td></tr>
+      <tr><td>Neha</td><td>CSE</td><td>8.9</td></tr>
+      <tr><td>Aman</td><td>Mechanical</td><td>7.5</td></tr>
+    </tbody>
+  </table>
+  <p id="no-results">No results found</p>
+
+  <script>
+    const searchInput = document.getElementById("search");
+    const studentRows = [...document.querySelectorAll("#student-rows tr")];
+    const noResults = document.getElementById("no-results");
+
+    searchInput.addEventListener("input", () => {
+      const query = searchInput.value.trim().toLowerCase();
+      let visibleCount = 0;
+
+      studentRows.forEach((row) => {
+        const rowText = row.textContent.toLowerCase();
+        const matches = rowText.includes(query);
+        row.hidden = !matches;
+        if (matches) visibleCount++;
+      });
+
+      noResults.style.display = visibleCount === 0 ? "block" : "none";
+    });
+  </script>
+</body>
+</html>

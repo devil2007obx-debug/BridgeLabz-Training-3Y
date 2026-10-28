@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Three-Step Form</title>
+  <style>
+    body { font-family: Arial, sans-serif; max-width: 500px; margin: 40px auto; padding: 0 16px; }
+    .step { display: none; }
+    .step.active { display: block; }
+    label { display: block; margin: 12px 0 6px; }
+    input { box-sizing: border-box; width: 100%; padding: 10px; }
+    button { margin: 14px 6px 0 0; padding: 9px 14px; }
+    #summary { background: #f1f1f1; padding: 12px; margin-top: 16px; }
+    .hidden { display: none; }
+  </style>
+</head>
+<body>
+  <h1>Multi-Step Form</h1>
+  <form id="wizard-form">
+    <section class="step active" data-step="0">
+      <h2>Step 1: Name</h2>
+      <label for="name">Full name</label>
+      <input id="name" name="name" required autocomplete="name">
+    </section>
+
+    <section class="step" data-step="1">
+      <h2>Step 2: Email</h2>
+      <label for="email">Email address</label>
+      <input id="email" name="email" type="email" required autocomplete="email">
+    </section>
+
+    <section class="step" data-step="2">
+      <h2>Step 3: Password</h2>
+      <label for="password">Password (minimum 6 characters)</label>
+      <input id="password" name="password" type="password" minlength="6" required autocomplete="new-password">
+    </section>
+
+    <div>
+      <button id="back-button" type="button" disabled>Back</button>
+      <button id="next-button" type="button">Next</button>
+      <button id="submit-button" type="submit" class="hidden">Finish</button>
+    </div>
+  </form>
+  <section id="summary" class="hidden" aria-live="polite"></section>
+
+  <script>
+    const form = document.getElementById("wizard-form");
+    const steps = [...document.querySelectorAll(".step")];
+    const backButton = document.getElementById("back-button");
+    const nextButton = document.getElementById("next-button");
+    const submitButton = document.getElementById("submit-button");
+    const summary = document.getElementById("summary");
+    let currentStep = 0;
+
+    function showStep(index) {
+      steps.forEach((step, stepIndex) => step.classList.toggle("active", stepIndex === index));
+      currentStep = index;
+      backButton.disabled = index === 0;
+      nextButton.classList.toggle("hidden", index === steps.length - 1);
+      submitButton.classList.toggle("hidden", index !== steps.length - 1);
+    }
+
+    function currentInput() {
+      return steps[currentStep].querySelector("input");
+    }
+
+    nextButton.addEventListener("click", () => {
+      const input = currentInput();
+      if (!input.checkValidity()) {
+        input.reportValidity();
+        return;
+      }
+      showStep(currentStep + 1);
+    });
+
+    backButton.addEventListener("click", () => {
+      if (currentStep > 0) showStep(currentStep - 1);
+    });
+
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+      const password = document.getElementById("password");
+      if (!password.checkValidity()) {
+        password.reportValidity();
+        return;
+      }
+
+      const name = document.getElementById("name").value.trim();
+      const email = document.getElementById("email").value.trim();
+
+      form.classList.add("hidden");
+      summary.classList.remove("hidden");
+      // Do not show the actual password in the summary.
+      summary.innerHTML = `<h2>Form completed!</h2><p><strong>Name:</strong> ${escapeHtml(name)}</p><p><strong>Email:</strong> ${escapeHtml(email)}</p><p><strong>Password:</strong> Received (hidden)</p>`;
+    });
+
+    function escapeHtml(value) {
+      return value.replace(/[&<>"']/g, (character) => ({
+        "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;"
+      })[character]);
+    }
+  </script>
+</body>
+</html>

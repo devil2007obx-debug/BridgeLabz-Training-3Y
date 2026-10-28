@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dynamic Product List Manager</title>
+  <style>
+    body { font-family: Arial, sans-serif; max-width: 650px; margin: 40px auto; padding: 0 16px; }
+    form { display: flex; gap: 8px; }
+    input { flex: 1; padding: 10px; }
+    button { padding: 9px 12px; cursor: pointer; }
+    li { display: flex; align-items: center; gap: 8px; margin: 10px 0; }
+    .product-name { flex: 1; }
+    .edit-input { flex: 1; padding: 8px; }
+  </style>
+</head>
+<body>
+  <h1>Dynamic Product List Manager</h1>
+  <form id="product-form">
+    <input id="product-input" type="text" placeholder="Enter product name" required>
+    <button type="submit">Add Product</button>
+  </form>
+  <ul id="product-list"></ul>
+
+  <script>
+    const productForm = document.getElementById("product-form");
+    const productInput = document.getElementById("product-input");
+    const productList = document.getElementById("product-list");
+    let editingItem = null;
+
+    productForm.addEventListener("submit", (event) => {
+      event.preventDefault();
+      const productName = productInput.value.trim();
+      if (!productName) return;
+      addProduct(productName);
+      productInput.value = "";
+      productInput.focus();
+    });
+
+    function addProduct(name) {
+      const listItem = document.createElement("li");
+      listItem.innerHTML = `
+        <span class="product-name"></span>
+        <button type="button" data-action="edit">Edit</button>
+        <button type="button" data-action="delete">Delete</button>`;
+      listItem.querySelector(".product-name").textContent = name;
+      productList.appendChild(listItem);
+    }
+
+    function saveEdit() {
+      if (!editingItem) return;
+      const editInput = editingItem.querySelector(".edit-input");
+      if (editInput) {
+        const updatedName = editInput.value.trim();
+        if (updatedName) {
+          const nameSpan = document.createElement("span");
+          nameSpan.className = "product-name";
+          nameSpan.textContent = updatedName;
+          editInput.replaceWith(nameSpan);
+        } else {
+          const nameSpan = document.createElement("span");
+          nameSpan.className = "product-name";
+          nameSpan.textContent = "Untitled product";
+          editInput.replaceWith(nameSpan);
+        }
+      }
+      editingItem = null;
+    }
+
+    productList.addEventListener("click", (event) => {
+      const actionButton = event.target.closest("button[data-action]");
+      if (!actionButton) return;
+      const listItem = actionButton.closest("li");
+
+      if (actionButton.dataset.action === "delete") {
+        if (editingItem === listItem) editingItem = null;
+        listItem.remove();
+      } else if (actionButton.dataset.action === "edit") {
+        if (editingItem && editingItem !== listItem) saveEdit();
+        if (listItem.querySelector(".edit-input")) return;
+
+        const nameSpan = listItem.querySelector(".product-name");
+        const editInput = document.createElement("input");
+        editInput.className = "edit-input";
+        editInput.value = nameSpan.textContent;
+        nameSpan.replaceWith(editInput);
+        editingItem = listItem;
+        editInput.focus();
+      }
+    });
+
+    // Clicking outside the current item automatically saves its edit.
+    document.addEventListener("click", (event) => {
+      if (editingItem && !editingItem.contains(event.target)) saveEdit();
+    });
+
+    productList.addEventListener("keydown", (event) => {
+      if (event.key === "Enter" && event.target.classList.contains("edit-input")) {
+        event.preventDefault();
+        saveEdit();
+      }
+      if (event.key === "Escape" && event.target.classList.contains("edit-input")) {
+        const nameSpan = document.createElement("span");
+        nameSpan.className = "product-name";
+        nameSpan.textContent = event.target.value;
+        event.target.replaceWith(nameSpan);
+        editingItem = null;
+      }
+    });
+  </script>
+</body>
+</html>
