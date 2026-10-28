@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Object Updater</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 520px; margin: 30px auto; padding: 20px; }
+        label { display: block; margin-top: 12px; }
+        input { width: 100%; box-sizing: border-box; padding: 9px; margin-top: 5px; }
+        button { margin-top: 16px; padding: 10px 16px; }
+        pre { background: #f3f3f3; padding: 12px; white-space: pre-wrap; }
+    </style>
+</head>
+<body>
+    <h2>Edit User Details</h2>
+    <form id="userForm">
+        <label>Name <input id="name" value="John" required></label>
+        <label>Email <input id="email" type="email" value="john@mail.com" required></label>
+        <label>Age <input id="age" type="number" min="1" value="21" required></label>
+        <button type="submit">Update User</button>
+    </form>
+    <h3>Updated Object</h3>
+    <pre id="output"></pre>
+
+    <script>
+        const user = { name: "John", email: "john@mail.com", age: 21 };
+
+        function displayUser() {
+            document.getElementById("output").textContent = JSON.stringify(user, null, 2);
+        }
+
+        document.getElementById("userForm").addEventListener("submit", event => {
+            event.preventDefault();
+            user.name = document.getElementById("name").value.trim();
+            user.email = document.getElementById("email").value.trim();
+            user.age = Number(document.getElementById("age").value);
+            displayUser();
+        });
+
+        displayUser();
+    </script>
+</body>
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom Form Builder</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 520px; margin: 30px auto; padding: 20px; }
+        label { display: block; margin-top: 12px; }
+        input, select, textarea { display: block; width: 100%; box-sizing: border-box; padding: 9px; margin-top: 5px; }
+        button { margin-top: 16px; padding: 10px 16px; cursor: pointer; }
+        pre { background: #f3f3f3; padding: 12px; white-space: pre-wrap; }
+    </style>
+</head>
+<body>
+    <h2>Dynamic Form Builder</h2>
+    <div id="formContainer"></div>
+    <h3>Submitted Data</h3>
+    <pre id="output">Fill the form and click Submit.</pre>
+
+    <script>
+        class FormBuilder {
+            constructor(fields, container) {
+                this.fields = fields;
+                this.container = container;
+            }
+
+            buildForm() {
+                const form = document.createElement("form");
+                form.id = "dynamicForm";
+
+                this.fields.forEach((field, index) => {
+                    const label = document.createElement("label");
+                    label.htmlFor = `field${index}`;
+                    label.textContent = field.label;
+
+                    let input;
+                    if (field.type === "textarea") {
+                        input = document.createElement("textarea");
+                    } else if (field.type === "select") {
+                        input = document.createElement("select");
+                        (field.options || []).forEach(optionText => {
+                            const option = document.createElement("option");
+                            option.value = optionText;
+                            option.textContent = optionText;
+                            input.appendChild(option);
+                        });
+                    } else {
+                        input = document.createElement("input");
+                        input.type = field.type;
+                    }
+
+                    input.id = `field${index}`;
+                    input.name = field.name;
+                    if (field.required) input.required = true;
+                    form.append(label, input);
+                });
+
+                const submit = document.createElement("button");
+                submit.type = "submit";
+                submit.textContent = "Submit";
+                form.appendChild(submit);
+
+                form.addEventListener("submit", event => {
+                    event.preventDefault();
+                    document.getElementById("output").textContent =
+                        JSON.stringify(this.getFormData(form), null, 2);
+                });
+
+                this.container.innerHTML = "";
+                this.container.appendChild(form);
+            }
+
+            getFormData(form = this.container.querySelector("form")) {
+                const data = {};
+                this.fields.forEach(field => {
+                    const input = form.elements[field.name];
+                    data[field.name] = input.type === "checkbox" ? input.checked : input.value;
+                });
+                return data;
+            }
+        }
+
+        const fields = [
+            { type: "text", label: "Username", name: "username", required: true },
+            { type: "email", label: "Email", name: "email", required: true },
+            { type: "select", label: "Course", name: "course", options: ["CSE", "IT", "ECE"] },
+            { type: "textarea", label: "About You", name: "about" }
+        ];
+
+        new FormBuilder(fields, document.getElementById("formContainer")).buildForm();
+    </script>
+</body>
+</html>
