@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <!-- REQUIRED for responsive design: tells phones to use their real screen width -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Responsive Internal CSS Demo</title>
+
+  <style>
+    /* ---------- Basic reset ---------- */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #f4f6f8;
+      color: #222;
+      line-height: 1.5;
+    }
+
+    /* ---------- MOBILE FIRST: these styles apply to every screen ---------- */
+    .header {
+      background: #2c3e50;
+      color: white;
+      text-align: center;
+      padding: 30px 16px;
+    }
+
+    .title {
+      /* clamp(min, preferred, max): text grows with the screen */
+      font-size: clamp(1.5rem, 5vw, 2.5rem);
+    }
+
+    .subtitle {
+      opacity: 0.8;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1000px;      /* never wider than 1000px */
+      margin: 24px auto;
+      padding: 0 16px;
+    }
+
+    /* Cards: 1 column on phones */
+    .card-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+
+    .card {
+      background: white;
+      border-left: 6px solid #999;
+      border-radius: 8px;
+      padding: 20px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .card-blue   { border-left-color: #3498db; }
+    .card-green  { border-left-color: #27ae60; }
+    .card-orange { border-left-color: #e67e22; }
+
+    .card-title {
+      margin-bottom: 8px;
+    }
+
+    code {
+      background: #eee;
+      padding: 2px 6px;
+      border-radius: 4px;
+    }
+
+    /* Buttons: stacked on phones */
+    .button-row {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin: 24px 0;
+    }
+
+    .btn {
+      padding: 12px 20px;
+      border: 2px solid transparent;
+      border-radius: 6px;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+
+    .btn-primary { background: #3498db; color: white; }
+    .btn-danger  { background: #e74c3c; color: white; }
+    .btn-outline { background: transparent; border-color: #2c3e50; color: #2c3e50; }
+    .btn:hover   { opacity: 0.85; }
+
+    .screen-info {
+      background: #2c3e50;
+      color: white;
+      text-align: center;
+      padding: 12px;
+      border-radius: 8px;
+    }
+
+    /* This text changes with each breakpoint (see media queries below) */
+    .screen-info::after {
+      content: "Phone layout (1 column)";
+    }
+
+    .footer {
+      text-align: center;
+      padding: 20px;
+      color: #777;
+    }
+
+    /* ---------- TABLET: screen width 600px or more ---------- */
+    @media (min-width: 600px) {
+      .card-grid {
+        grid-template-columns: repeat(2, 1fr);   /* 2 columns */
+      }
+
+      .button-row {
+        flex-direction: row;                     /* buttons side by side */
+      }
+
+      .screen-info::after {
+        content: "Tablet layout (2 columns)";
+      }
+    }
+
+    /* ---------- DESKTOP: screen width 900px or more ---------- */
+    @media (min-width: 900px) {
+      .card-grid {
+        grid-template-columns: repeat(3, 1fr);   /* 3 columns */
+      }
+
+      .header {
+        padding: 50px 16px;
+      }
+
+      .screen-info::after {
+        content: "Desktop layout (3 columns)";
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="header">
+    <h1 class="title">Responsive Demo</h1>
+    <p class="subtitle">Resize your browser window to see the layout change</p>
+  </header>
+
+  <main class="container">
+
+    <div class="card-grid">
+      <section class="card card-blue">
+        <h2 class="card-title">Blue Card</h2>
+        <p>Uses classes <code>card</code> and <code>card-blue</code>.</p>
+      </section>
+
+      <section class="card card-green">
+        <h2 class="card-title">Green Card</h2>
+        <p>Uses classes <code>card</code> and <code>card-green</code>.</p>
+      </section>
+
+      <section class="card card-orange">
+        <h2 class="card-title">Orange Card</h2>
+        <p>Uses classes <code>card</code> and <code>card-orange</code>.</p>
+      </section>
+    </div>
+
+    <div class="button-row">
+      <button class="btn btn-primary">Primary</button>
+      <button class="btn btn-danger">Danger</button>
+      <button class="btn btn-outline">Outline</button>
+    </div>
+
+    <div class="screen-info"></div>
+
+  </main>
+
+  <footer class="footer">
+    <p>Responsive page with internal CSS (one file)</p>
+  </footer>
+
+</body>
+</html>
