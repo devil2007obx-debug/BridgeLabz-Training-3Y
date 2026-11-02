@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Q1. Personalized Login Greeting</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header class="top">
+  <a class="back" href="index.html">Back to all questions</a>
+  <h1>Q1. Personalized Login Greeting</h1>
+  <p>Greets the user based on the hour from new Date().getHours().</p>
+</header>
+<main class="layout">
+  <section class="panel" aria-labelledby="input-heading">
+    <h2 id="input-heading">Input</h2>
+    <form id="form" novalidate>
+<label for="userName">User name</label>
+<input type="text" id="userName" value="Abhishek">
+<label for="testHour">Test hour (0-23, optional)</label>
+<input type="number" id="testHour" min="0" max="23" placeholder="Leave empty to use the real clock">
+<p class="small">Leave the hour empty to use the real system time.</p>
+<button type="submit">Greet me</button>
+    </form>
+  </section>
+  <section aria-labelledby="out-heading">
+    <h2 id="out-heading">Console output</h2>
+    <div class="console" id="console" aria-live="polite"></div>
+    <p class="hint">Same output is also printed in the browser console (press F12).</p>
+  </section>
+</main>
+<script src="js/ui.js"></script>
+<script src="js/q1_login_greeting.js"></script>
+</body>
+</html>

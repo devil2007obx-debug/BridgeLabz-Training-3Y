@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Q3. Monthly Expense Tracker</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header class="top">
+  <a class="back" href="index.html">Back to all questions</a>
+  <h1>Q3. Monthly Expense Tracker</h1>
+  <p>Total, average and final amount after 10% tax. Results update as you type.</p>
+</header>
+<main class="layout">
+  <section class="panel" aria-labelledby="input-heading">
+    <h2 id="input-heading">Input</h2>
+    <form id="form" novalidate>
+<label for="exp0">Food</label><input type="number" id="exp0" value="4500" min="0">
+<label for="exp1">Travel</label><input type="number" id="exp1" value="1800" min="0">
+<label for="exp2">Rent</label><input type="number" id="exp2" value="8000" min="0">
+<label for="exp3">Bills</label><input type="number" id="exp3" value="1200" min="0">
+<label for="exp4">Leisure</label><input type="number" id="exp4" value="1500" min="0">
+<button type="submit">Calculate</button>
+    </form>
+  </section>
+  <section aria-labelledby="out-heading">
+    <h2 id="out-heading">Console output</h2>
+    <div class="console" id="console" aria-live="polite"></div>
+    <p class="hint">Same output is also printed in the browser console (press F12).</p>
+  </section>
+</main>
+<script src="js/ui.js"></script>
+<script src="js/q3_expense_tracker.js"></script>
+</body>
+</html>
